@@ -1,0 +1,194 @@
+{% extends 'layouts/base.html' %}
+
+
+{% block content %}
+<main id="main" class="main">
+
+    <div class="pagetitle">
+      <h1>Health Worker Detail</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item">Home</li>
+          <li class="breadcrumb-item">Users</li>
+          <li class="breadcrumb-item">ID: {{user_id}}</li>
+          <li class="breadcrumb-item active">Health Worker Detail</li>
+        </ol>
+      </nav>
+    </div><!-- End Page Title -->
+    {% if success %}
+          <div class="alert alert-success bg-success text-light border-0 alert-dismissible fade show" role="alert">
+            {{ success }}
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+          {% endif %}
+    <section class="section profile">
+      <div class="row">
+        
+
+        <div class="col-xl-12">
+
+          <div class="card">
+            <div class="card-body pt-3">
+            
+              
+                <div class="tab-pane fade show active profile-overview" id="profile-overview">
+                    <!-- <h5 class="card-title">About</h5>
+                    <p class="small fst-italic">Sunt est soluta temporibus accusantium neque nam maiores cumque temporibus. Tempora libero non est unde veniam est qui dolor. Ut sunt iure rerum quae quisquam autem eveniet perspiciatis odit. Fuga sequi sed ea saepe at unde.</p> -->
+  
+                    <h5 class="card-title">User Information Detail</h5>
+  
+                    <div class="row">
+                      <div class="col-lg-3 col-md-4 label ">LHW Code</div>
+                      <div class="col-lg-9 col-md-8">{{HW.code}}</div>
+                    </div>
+  
+                    <div class="row">
+                      <div class="col-lg-3 col-md-4 label">LHW Name</div>
+                      <div class="col-lg-9 col-md-8">{{HW.name}}</div>
+                    </div>
+                   
+                    <div class="row">
+                      <div class="col-lg-3 col-md-4 label">LHW CNIC</div>
+                      <div class="col-lg-9 col-md-8">{{HW.cnic}}</div>
+                    </div>
+                    <div class="row">
+                      <div class="col-lg-3 col-md-4 label">LHW Phone Number</div>
+                      <div class="col-lg-9 col-md-8">{{HW.phone}}</div>
+                    </div>
+                    
+                    <div class="row">
+                      <div class="col-lg-3 col-md-4 label">LHW Email</div>
+                      <div class="col-lg-9 col-md-8">{{user.email}}</div>
+                    </div>
+                    <div class="row">
+                      <div class="col-lg-3 col-md-4 label">LHW Father/Husband Name</div>
+                      <div class="col-lg-9 col-md-8">{{HW.father_or_husband_name}}</div>
+                    </div>
+  
+                    <div class="row">
+                      <div class="col-lg-3 col-md-4 label">LHW Attached Facility</div>
+                      <div class="col-lg-9 col-md-8">{{ HW.attached_facility}}</div>
+                    </div>
+  
+                    <div class="row">
+                      <div class="col-lg-3 col-md-4 label">LHW Union Council</div>
+                      <div class="col-lg-9 col-md-8">{{HW.union_council}}</div>
+                    </div>
+  
+                    <div class="row">
+                      <div class="col-lg-3 col-md-4 label">LHW Tehsil</div>
+                      <div class="col-lg-9 col-md-8">{{HW.tehsil}}</div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-3 col-md-4 label">LHW District</div>
+                        <div class="col-lg-9 col-md-8">{{HW.district}}</div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-3 col-md-4 label">Catchment Population of FLCF</div>
+                        <div class="col-lg-9 col-md-8">{{HW.catchment_of_population_of_flcf}}</div>
+                    </div>
+                      
+                    <div class="row">
+                        <div class="col-lg-3 col-md-4 label">Popultaion Registered by LHWs</div>
+                        <div class="col-lg-9 col-md-8">{{HW.population_registered_by_lhws}}</div>
+                    </div>
+                    
+                    <div class="row">
+                      <div class="col-lg-3 col-md-4 label">Date Joined</div>
+                      <div class="col-lg-9 col-md-8">{{user.date_joined}}</div>
+                  </div>
+                  <div class="row">
+                    <div class="col-lg-3 col-md-4 label">Is Health Worker Admin?</div>
+                    <div class="col-lg-9 col-md-8">{{user.is_superuser}}</div>
+                </div>
+                  
+                  <div class="row">
+                    <div class="col-lg-3 col-md-4 label">Is Health Worker Active?</div>
+                    <div class="col-lg-9 col-md-8">{{user.is_active}}</div>
+                </div>
+                <div class="row">
+                  <div class="col-lg-3 col-md-4 label">Last Login</div>
+                  <div class="col-lg-9 col-md-8">{{user.last_login}}</div>
+              </div>
+              <div class="row">
+                <div class="col-lg-3 col-md-4 label">Age</div>
+                <div class="col-lg-9 col-md-8">{{HW.age}}</div>
+              </div>
+              <div class="row">
+                <div class="col-lg-3 col-md-4 label">Retirement Year</div>
+                <div class="col-lg-9 col-md-8">{{HW.retirementyear}}</div>
+              </div>
+
+             
+            </div>
+          </div>
+          <div class="card-title">Last 12 Months Performance of {{HW.name}}</div>
+          <table class="table ">
+            <thead>
+              <tr>
+                <th scope="col">Sr No.</th>
+                <th scope="col">Month</th>
+                <th scope="col">Year</th>
+                <th scope="col">Number of Reports</th>
+                <th scope="col">Min Reports Required</th>
+                <th scope="col">Criteria Met or Not</th>
+                
+              </tr>
+            </thead>
+            <script>
+                const idss = [];
+            </script>
+            <tbody>
+                {% for Data in data %}
+                <tr>
+                  <td>{{forloop.counter}}</td>
+                  <td>{{Data.0}}</td>
+                  <td>{{Data.1}}</td>
+                  <td>{{Data.2}}</td>
+                  <td>1</td>
+                  <td id="color">{{Data.3}}</td>
+                  <script>
+                    var a='{{forloop.counter}}';
+                    x=parseInt(a);
+                    if('{{Data.3}}'=="NO")
+                    {var e = document.getElementById("color");
+                    e.id = "hello_"+a;
+                    idss[x]=e.id;
+                  }
+                  else{
+                    var e = document.getElementById("color");
+                    e.id = "live_"+a;
+                    idss[x]=e.id;
+                  }
+                  </script>
+                </tr>
+                {% endfor %}
+  
+              </tbody>
+          </table>
+          <script>
+            
+            var a=1;
+            console.log(idss)
+            for(a=1; a<13;a++){
+              
+                var b= a.toString();
+                if(idss[a]=="live_"+a){
+                
+                document.getElementById(idss[a]).style.backgroundColor='green';
+                
+                }
+                else{
+                    document.getElementById(idss[a]).style.backgroundColor='red';
+
+                }
+            }
+          </script>
+        </div>
+      </div>
+    </section>
+
+  </main>
+{% endblock %}
